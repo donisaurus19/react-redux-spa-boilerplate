@@ -2,7 +2,7 @@
 
 var path = require("path");
 var production = process.env.NODE_ENV === "production";
-// var webpack = require("webpack") // uncomment if using webpack plugins
+var webpack = require("webpack");
 
 module.exports = {
     entry: path.join(__dirname, "/app/client.js"),
@@ -23,6 +23,11 @@ module.exports = {
         path: path.join(__dirname, "/public")
     },
     plugins: production ? [
+        new webpack.DefinePlugin({
+          "process.env": {
+             NODE_ENV: JSON.stringify("production")
+           }
+        }),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin()

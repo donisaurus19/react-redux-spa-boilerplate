@@ -4,6 +4,7 @@ var path = require("path");
 var gulp = require("gulp");
 var sass = require("gulp-sass");
 var sourcemaps = require("gulp-sourcemaps");
+var connect = require("gulp-connect");
 var production = process.env.NODE_ENV === "production";
 
 gulp.task("sass", function() {
@@ -14,6 +15,15 @@ gulp.task("sass", function() {
         // create sourcemap file
         .pipe(sourcemaps.write("./"))
         .pipe(gulp.dest("./public/"))
+});
+
+// for deployment, Ex. heroku
+gulp.task("connect", function() {
+  connect.server({
+    root: "./public",
+    port: process.env.PORT || 3000,
+    livereload: false
+  });
 });
 
 // complete default task before watching

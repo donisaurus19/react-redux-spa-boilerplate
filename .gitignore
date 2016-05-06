@@ -42,3 +42,9 @@ bower_components
 
 # minified files
 *.min.*
+
+# compiled CSS files
+public/*.css
+
+# webpack bundled script
+public/client-bundle.js
