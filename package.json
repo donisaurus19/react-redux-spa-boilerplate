@@ -7,7 +7,8 @@
     "start": "gulp watch | webpack-dev-server --inline --hot --content-base ./public",
     "start:prod": "gulp connect",
     "build:prod": "gulp | webpack --optimize-minimize",
-    "postinstall": "npm run build:prod"
+    "postinstall": "npm run build:prod",
+    "simulate-prod": "set NODE_ENV=production&&npm run build:prod&&npm run start:prod"
   },
   "engines": {
     "node": "4.2.6",
